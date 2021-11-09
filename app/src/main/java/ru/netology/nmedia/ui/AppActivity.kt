@@ -1,19 +1,13 @@
 package ru.netology.nmedia.ui
 
-import android.content.res.AssetFileDescriptor
-import android.media.AudioAttributes
-import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
-import android.widget.MediaController
-import android.widget.VideoView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import ru.netology.nmedia.MediaLifecycleObserver
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.ActivityAppBinding
-import ru.netology.nmedia.ui.adapter.TrackAdapter
-import ru.netology.nmedia.ui.viewmodel.MusicViewModel
+import ru.netology.nmedia.adapter.TrackAdapter
+import ru.netology.nmedia.viewmodel.MusicViewModel
 
 class AppActivity : AppCompatActivity(R.layout.activity_app) {
 
@@ -47,7 +41,7 @@ class AppActivity : AppCompatActivity(R.layout.activity_app) {
                 }
             }
         }
-        mediaObserver.bigButton = binding.commonButton
+        mediaObserver.commonButton = binding.commonButton
 
         lifecycle.addObserver(mediaObserver)
     }

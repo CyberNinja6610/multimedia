@@ -1,11 +1,11 @@
-package ru.netology.nmedia.ui.adapter
+package ru.netology.nmedia.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import ru.netology.nmedia.databinding.TrackBinding
-import ru.netology.nmedia.ui.MediaLifecycleObserver
-import ru.netology.nmedia.ui.model.Track
+import ru.netology.nmedia.MediaLifecycleObserver
+import ru.netology.nmedia.model.Track
 
 class TrackAdapter(private val mediaObserver: MediaLifecycleObserver)
     : ListAdapter<Track, TrackViewHolder>(TrackDiffCallback()) {

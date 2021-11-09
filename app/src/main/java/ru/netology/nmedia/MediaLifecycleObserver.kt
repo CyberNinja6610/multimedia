@@ -1,4 +1,4 @@
-package ru.netology.nmedia.ui
+package ru.netology.nmedia
 
 import android.content.Context
 import android.media.MediaPlayer
@@ -12,7 +12,7 @@ import ru.netology.nmedia.R
 class MediaLifecycleObserver(private val context: Context) : LifecycleObserver {
     var player: MediaPlayer? = MediaPlayer()
     var curUrl: String = ""
-    var bigButton: MaterialButton? = null
+    var commonButton: MaterialButton? = null
     var trackButton: MaterialButton? = null
 
     fun play() {
@@ -22,7 +22,7 @@ class MediaLifecycleObserver(private val context: Context) : LifecycleObserver {
             context,
             R.drawable.ic_baseline_pause_circle_filled_24
         )
-        bigButton?.icon = AppCompatResources.getDrawable(
+        commonButton?.icon = AppCompatResources.getDrawable(
             context,
             R.drawable.ic_baseline_pause_circle_filled_24
         )
@@ -35,7 +35,7 @@ class MediaLifecycleObserver(private val context: Context) : LifecycleObserver {
             context,
             R.drawable.ic_baseline_play_circle_filled_24
         )
-        bigButton?.icon = AppCompatResources.getDrawable(
+        commonButton?.icon = AppCompatResources.getDrawable(
             context,
             R.drawable.ic_baseline_play_circle_filled_24
         )
@@ -49,7 +49,7 @@ class MediaLifecycleObserver(private val context: Context) : LifecycleObserver {
             context,
             R.drawable.ic_baseline_play_circle_filled_24
         )
-        bigButton?.icon = AppCompatResources.getDrawable(
+        commonButton?.icon = AppCompatResources.getDrawable(
             context,
             R.drawable.ic_baseline_play_circle_filled_24
         )

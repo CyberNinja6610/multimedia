@@ -1,4 +1,4 @@
-package ru.netology.nmedia.ui.model
+package ru.netology.nmedia.model
 
 data class FeedModel (
     val album: Album,

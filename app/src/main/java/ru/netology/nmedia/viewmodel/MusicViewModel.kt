@@ -1,4 +1,4 @@
-package ru.netology.nmedia.ui.viewmodel
+package ru.netology.nmedia.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,9 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import okhttp3.OkHttpClient
-import ru.netology.nmedia.ui.api.Api
-import ru.netology.nmedia.ui.model.FeedModel
+import ru.netology.nmedia.api.Api
+import ru.netology.nmedia.model.FeedModel
 
 class MusicViewModel : ViewModel() {
     private val _data = MutableLiveData<FeedModel>()

@@ -1,7 +1,7 @@
-package ru.netology.nmedia.ui.adapter
+package ru.netology.nmedia.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import ru.netology.nmedia.ui.model.Track
+import ru.netology.nmedia.model.Track
 
 class TrackDiffCallback : DiffUtil.ItemCallback<Track>() {
     override fun areItemsTheSame(oldItem: Track, newItem: Track): Boolean {
