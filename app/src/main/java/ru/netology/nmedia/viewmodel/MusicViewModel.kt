@@ -6,13 +6,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import ru.netology.nmedia.BuildConfig
 import ru.netology.nmedia.api.Api
 import ru.netology.nmedia.model.FeedModel
+import ru.netology.nmedia.model.Track
+import ru.netology.nmedia.util.SingleLiveEvent
 
 class MusicViewModel : ViewModel() {
     private val _data = MutableLiveData<FeedModel>()
     val data: LiveData<FeedModel>
         get() = _data
+
+    private val _curTrackId = MutableLiveData<String>()
+    val curTrackId: LiveData<String>
+        get() = _curTrackId
 
     init {
         loadTracks()
@@ -28,6 +35,23 @@ class MusicViewModel : ViewModel() {
             }
         } catch (e: Exception) {
             Log.d("MUSIC", "loadTracks: " + e.message)
+        }
+    }
+
+    fun isPlaying(): Boolean {
+        return data.value?.album?.tracks?.filter { track ->
+            track.isPlaying ?: false
+        }?.size ?: 0 > 0
+    }
+
+    fun play(trackId: String) {
+        _data.value?.let {
+            _data.value = FeedModel(album = it.album.copy(tracks = it.album.tracks.map { curTrack ->
+                if (trackId == curTrack.id) curTrack.copy(isPlaying = !(curTrack.isPlaying?: false)) else curTrack.copy(isPlaying = false)
+            }))
+        }
+        if (trackId !== _curTrackId.value) {
+            _curTrackId.value = trackId
         }
     }
 }

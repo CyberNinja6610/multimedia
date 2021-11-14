@@ -7,12 +7,16 @@ import ru.netology.nmedia.databinding.TrackBinding
 import ru.netology.nmedia.MediaLifecycleObserver
 import ru.netology.nmedia.model.Track
 
-class TrackAdapter(private val mediaObserver: MediaLifecycleObserver)
-    : ListAdapter<Track, TrackViewHolder>(TrackDiffCallback()) {
+interface OnInteractionListener {
+    fun onClick(track: Track) {}
+}
+
+class TrackAdapter(private val onInteractionListener: OnInteractionListener) :
+    ListAdapter<Track, TrackViewHolder>(TrackDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewHolder {
         val binding = TrackBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return TrackViewHolder(mediaObserver, binding)
+        return TrackViewHolder(binding = binding, onInteractionListener = onInteractionListener)
     }
 
     override fun onBindViewHolder(holder: TrackViewHolder, position: Int) {
